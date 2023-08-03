@@ -1,0 +1,49 @@
+/* Copyright (c) 2019-2023 VMware, Inc. All rights reserved. */
+/* You can add global styles to this file, and also import other style files */
+clr-icon {
+  margin-bottom: 3px;
+}
+
+.info-icon {
+  color: var(--info-icon-color);
+}
+
+form.modal-content-delete {
+  padding: 10px 0 0 24px;
+}
+
+form.vm-action-modal-content {
+  padding: 0 0 0 24px;
+}
+
+.viewTitle {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.chassis-list-view .chassises-datagrid-container .datagrid-overlay-wrapper{
+  margin-top: 30px;
+}
+
+.plugin-icon {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  transform: scale(0.5);
+}
+
+.welcome-icon {
+  background-position: 0 32px;
+}
+
+.settings-icon {
+  background-position: 32px 64px;
+}
+
+.chassis-list-icon {
+  background-position: 96px 128px;
+}
+
+clr-tabs > .tab-content {
+  width: 100%
+}

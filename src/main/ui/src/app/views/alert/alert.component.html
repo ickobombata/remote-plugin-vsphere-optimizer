@@ -1,0 +1,15 @@
+<!--Copyright (c) 2019-2023 VMware, Inc. All rights reserved.-->
+<div *ngIf="!!error" class="alert alert-danger" role="alert">
+   <div class="alert-items">
+      <div class="alert-item static">
+         <div class="alert-icon-wrapper">
+            <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+         </div>
+         <span class="alert-text">{{error.message}}</span>
+      </div>
+   </div>
+   <button type="button" class="close" aria-label="Close"
+           (click)="onAlertClose()">
+      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+   </button>
+</div>

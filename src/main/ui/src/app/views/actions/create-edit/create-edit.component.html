@@ -1,0 +1,80 @@
+<!-- Copyright (c) 2019-2023 VMware, Inc. All rights reserved. -->
+<app-alert-message [error]="error"></app-alert-message>
+
+<form class="clr-form clr-form-horizontal"
+      [formGroup]="form" (ngSubmit)="onSubmit()">
+   <!--   Chassis Name-->
+   <div class="clr-form-control">
+      <label for="name" class="clr-control-label">{{'common.name' | translate}}</label>
+      <div class="clr-control-container"
+           [class.clr-error]="isEmpty(name)">
+         <div class="clr-input-wrapper">
+            <input type="text" id="name" class="clr-input"
+                   placeholder="{{'actions.namePlaceholder' | translate}}"
+                   formControlName="name" required autofocus>
+            <clr-icon class="clr-validate-icon"
+                      shape="exclamation-circle"></clr-icon>
+         </div>
+         <span class="clr-subtext" *ngIf="isEmpty(name)">
+            {{'actions.create.emptyNameError' | translate}}
+         </span>
+      </div>
+   </div>
+   <!--   Chassis Server Type-->
+   <div class="clr-form-control">
+      <label for="serverType" class="clr-control-label">{{'common.serverType' | translate}}</label>
+      <div class="clr-control-container">
+         <div class="clr-input-wrapper">
+            <input type="text" id="serverType" class="clr-input"
+                   placeholder="{{'actions.serverTypePlaceholder' | translate}}"
+                   formControlName="serverType">
+         </div>
+      </div>
+   </div>
+   <!--   Chassis Dimensions-->
+   <div class="clr-form-control">
+      <label for="dimensions" class="clr-control-label">{{'common.dimensions' | translate}}</label>
+      <div class="clr-control-container">
+         <div class="clr-input-wrapper">
+            <input type="text" id="dimensions" class="clr-input"
+                   placeholder="{{'actions.dimensionsPlaceholder' | translate}}"
+                   formControlName="dimensions">
+         </div>
+      </div>
+   </div>
+   <!--   Chassis isActive-->
+   <div class="clr-form-control">
+      <label class="clr-control-label"> {{ 'common.state' | translate }}
+         <div role="tooltip" aria-haspopup="true"
+              class="tooltip tooltip-md tooltip-top-right">
+            <clr-icon class="info-icon" shape="info-circle"
+                      size="18"></clr-icon>
+            <span class="tooltip-content">{{ 'actions.whatCanTheStateBe' | translate }}</span>
+         </div>
+      </label>
+      <div class="clr-control-container">
+         <clr-checkbox-wrapper>
+            <input clrCheckbox id="active" type="checkbox" name="active"
+                   formControlName="isActive">
+            <label>{{ 'common.active' | translate }}</label>
+         </clr-checkbox-wrapper>
+      </div>
+   </div>
+
+   <div class="clr-form-control">
+      <label class="clr-control-label">{{ 'actions.create.wizardPage3' | translate }}</label>
+   </div>
+
+   <app-hosts-list-view
+      [preselectedHostsIds]="chassis.relatedHostsIds || []"
+      (hostsSelectionChange)="onHostsSelectionChange($event)"
+      (onNavigateToHostObject)="onNavigateToHostObject()"
+      (onError)="onError($event)">
+   </app-hosts-list-view>
+
+   <div class="modal-footer">
+      <button type="button" class="btn" (click)="onCancel()" id="cancelBtn">{{ 'common.cancel' | translate }}</button>
+      <button type="button" class="btn btn-primary" id="saveBtn" (click)="onSubmit()"
+              [disabled]="!form.valid" >{{ 'common.ok' | translate }}</button>
+   </div>
+</form>

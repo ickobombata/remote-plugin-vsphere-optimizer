@@ -1,0 +1,24 @@
+<!-- Copyright (c) 2019-2023 VMware, Inc. All rights reserved. -->
+<app-custom-header [chassis]="chassis"></app-custom-header>
+<clr-tabs>
+   <clr-tab>
+      <button clrTabLink>{{ 'main.summary' | translate }}</button>
+      <clr-tab-content *clrIfActive>
+         <app-summary-view [chassis]="chassis"></app-summary-view>
+      </clr-tab-content>
+   </clr-tab>
+
+   <clr-tab>
+      <button clrTabLink>{{ 'main.monitor' | translate }}</button>
+      <clr-tab-content *clrIfActive>
+         <app-monitor-view [chassis]="chassis"></app-monitor-view>
+      </clr-tab-content>
+   </clr-tab>
+
+   <clr-tab>
+      <button clrTabLink>{{ 'vsphere.objects.hosts' | translate }}</button>
+      <clr-tab-content *clrIfActive>
+         <app-hosts-list-view [chassis]="chassis"></app-hosts-list-view>
+      </clr-tab-content>
+   </clr-tab>
+</clr-tabs>

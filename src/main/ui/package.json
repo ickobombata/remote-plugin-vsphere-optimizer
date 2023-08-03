@@ -1,0 +1,61 @@
+{
+  "name": "remote-plugin-sample",
+  "version": "1.0.0",
+  "license": "SEE LICENSE IN License-Agreement.html",
+  "scripts": {
+    "build": "node node_modules/@angular/cli/bin/ng build --extract-css --aot",
+    "build:prod": "node node_modules/@angular/cli/bin/ng build --prod",
+    "watch": "node node_modules/@angular/cli/bin/ng build --watch --extract-css",
+    "lint": "node node_modules/@angular/cli/bin/ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "12.2.12",
+    "@angular/common": "12.2.12",
+    "@angular/compiler": "12.2.12",
+    "@angular/core": "12.2.12",
+    "@angular/forms": "12.2.12",
+    "@angular/platform-browser": "12.2.12",
+    "@angular/platform-browser-dynamic": "12.2.12",
+    "@angular/router": "12.2.12",
+    "@cds/core": "^5.4.1",
+    "@clr/angular": "^12.3.0",
+    "@clr/icons": "^12.0.12",
+    "@clr/ui": "^12.3.0",
+    "@ngx-translate/core": "11.0.1",
+    "@ngx-translate/http-loader": "4.0.0",
+    "@webcomponents/custom-elements": "1.2.2",
+    "classlist.js": "^1.1.20150312",
+    "core-js": "^2.6.5",
+    "css-vars-ponyfill": "1.9.0",
+    "mutationobserver-shim": "^0.3.2",
+    "rxjs": "^6.5.4",
+    "tslib": "^2.0.0",
+    "web-animations-js": "^2.3.2",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "12.2.12",
+    "@angular-eslint/builder": "12.7.0",
+    "@angular-eslint/eslint-plugin": "12.7.0",
+    "@angular-eslint/eslint-plugin-template": "12.7.0",
+    "@angular-eslint/schematics": "12.7.0",
+    "@angular-eslint/template-parser": "12.7.0",
+    "@angular/cli": "12.2.12",
+    "@angular/compiler-cli": "12.2.12",
+    "@angular/language-service": "12.2.12",
+    "@types/node": "14.14.33",
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "eslint": "^7.26.0",
+    "ts-node": "9.1.1",
+    "tslint-to-eslint-config": "^2.4.0",
+    "typescript": "4.3.5",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsdoc": "37.9.7",
+    "eslint-plugin-prefer-arrow": "1.2.3"
+  },
+  "engines": {
+    "node": ">= 8 < 14"
+  }
+}
