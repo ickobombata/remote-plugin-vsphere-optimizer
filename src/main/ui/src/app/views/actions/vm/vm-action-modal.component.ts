@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { GlobalService } from '~services/global.service';
+import { HostsService } from '~services/hosts.service';
 
 @Component({
    templateUrl: './vm-action-modal.component.html',
@@ -10,7 +11,8 @@ import { GlobalService } from '~services/global.service';
    }`]
 })
 export class VmActionModalComponent {
-   constructor(private globalService: GlobalService) {
+   constructor(private globalService: GlobalService,
+    private hostsService: HostsService) {
    }
 
    onClose(): void {
@@ -18,7 +20,10 @@ export class VmActionModalComponent {
    }
 
    onSubmit(): void {
-      this.closeModal();
+      this.hostsService.optmize().subscribe({
+         error: () => console.log('error bro'),
+         complete: () => this.closeModal()
+      });
    }
 
    private closeModal(): void {

@@ -2,16 +2,26 @@
 
 package com.vmware.sample.remote.controllers;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.vmware.sample.remote.gateway.CloneSessionReply;
+import com.vmware.sample.remote.gateway.GatewayCredentials;
 import com.vmware.sample.remote.gateway.SessionService;
 import com.vmware.sample.remote.model.Chassis;
 import com.vmware.sample.remote.model.Host;
 import com.vmware.sample.remote.services.ChassisService;
 import com.vmware.sample.remote.services.HostService;
+import com.vmware.sample.remote.util.CertificateUtil;
 import com.vmware.sample.remote.vim25.services.VimObjectService;
 import com.vmware.vim25.ManagedObjectReference;
 import com.vmware.vim25.PerfQuerySpec;
@@ -21,12 +31,26 @@ import com.vmware.vim25.VimPortType;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContexts;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.net.ssl.SSLContext;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -55,6 +79,64 @@ public class HostController {
    }
 
    // HACHATHON implementation
+
+
+   @RequestMapping(value ="/scale", method = RequestMethod.POST)
+   public void scaleDownVm() {
+      final RestTemplate restTemplate = buildRestTemplate();
+      final String uri = UriComponentsBuilder
+            .fromHttpUrl("https://sc2-10-186-44-103.eng.vmware.com")
+            .path("/sdk/vim25/8.0.1.0/VirtualMachine/vm-16/ReconfigVM_Task").toUriString();
+
+      ObjectNode json = null;
+      try {
+         json = new ObjectMapper().readValue("{\"spec\":{\"_typeName\":\"VirtualMachineConfigSpec\",\"memoryMB\": 256}}", ObjectNode.class);
+      } catch (IOException e) {
+         throw new RuntimeException(e);
+      }
+      final HttpHeaders headers = new HttpHeaders();
+      headers.setContentType(MediaType.APPLICATION_JSON);
+      headers.set("vmware-api-session-id", "92518bae225a14152c3144dcfe413869968529d6");
+
+      restTemplate.exchange(uri, HttpMethod.POST,
+                  new HttpEntity<>(json, headers),
+                  Object.class).getBody();
+   }
+
+   private RestTemplate buildRestTemplate() {
+      final SSLContext sslContext;
+      try {
+         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public boolean isTrusted(X509Certificate[] x509Certificates,
+                  String s) {
+               return true;
+            }
+         };
+         sslContext = SSLContexts.custom()
+               .loadTrustMaterial(null, acceptingTrustStrategy).build();
+      } catch (KeyManagementException | NoSuchAlgorithmException |
+               KeyStoreException e) {
+         throw new RuntimeException("Failed to build an SSL context", e);
+      }
+
+      final SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(
+            sslContext, NoopHostnameVerifier.INSTANCE);
+      final CloseableHttpClient httpClient = HttpClients.custom()
+            .setSSLSocketFactory(csf).build();
+
+      final HttpComponentsClientHttpRequestFactory requestFactory =
+            new HttpComponentsClientHttpRequestFactory();
+      requestFactory.setHttpClient(httpClient);
+
+      final RestTemplate restTemplate = new RestTemplate(requestFactory);
+      return restTemplate;
+   }
+
+
+
+   // END HACAHTON
+
    private static final String PROP_SERVICE_INSTANCE = "ServiceInstance";
    private static final String PROP_HOST = "HostSystem";
 

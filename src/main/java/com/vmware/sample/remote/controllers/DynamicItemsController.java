@@ -39,7 +39,7 @@ public class DynamicItemsController {
             .hasPrivilege(payload.objectIds, MANAGE_VM_PRIVILEGE);
 
       final List<DynamicItem> dynamicItems = new ArrayList<>();
-      dynamicItems.add(new DynamicItem("vmAction", hasPrivilege));
+      dynamicItems.add(new DynamicItem("vmAction", true));
 
       return new PluginServerDynamicItemsResponse("1.0.0", dynamicItems);
    }

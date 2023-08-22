@@ -1,21 +1,7 @@
 {
-   "manifestVersion": "1.2.0",
+   "manifestVersion": "1.0.0",
    "requirements": {
-      "plugin.api.version": "1.2.0",
-      "vsphere.client": {
-         "version": "[7.0,)",
-         "environments": ["onprem", "gateway", "cloud"]
-      },
-      "vcenter.server": {
-         "version": "[7.0,)",
-         "environments": ["onprem", "cloud"]
-      },
-      "confirmation.modal.api": "1.0.0",
-      "proxied.plugin.server.origin.api": "1.0.0",
-      "icon.sprite.sheet.theming": "1.0.0",
-      "plugin.backend.info.api": "1.0.0",
-      "action.accepts.multiple.targets": true,
-      "plugin.dynamic.extensions": "1.0.0"
+      "plugin.api.version": "1.0.0"
    },
    "configuration": {
       "nameKey": "plugin.name",
@@ -33,11 +19,8 @@
    "objects": {
       "VirtualMachine": {
          "summary": {
-            "dynamicUri": "dynamicItems/vm/summary",
             "view": {
-               "id": "vmCard",
-               "uri": "index.html#/vm-card",
-               "dynamic": true
+               "uri": "index.html#/vm-card"
             }
          },
          "monitor": {
@@ -50,36 +33,31 @@
             ]
          },
          "configure": {
-            "dynamicUri": "dynamicItems/vm/configure",
             "views": [
                {
                   "navigationId": "vmConfigureView",
                   "labelKey": "vm.configure.view.title",
-                  "uri": "index.html#/vm-configure",
-                  "dynamic": true
+                  "uri": "index.html#/vm-configure"
                }
             ]
          },
          "menu": {
-            "dynamicUri": "dynamicItems/vm/actions",
             "actions": [
                {
                   "id": "vmAction",
-                  "labelKey": "vm.action.label",
+                  "labelKey": "Optimise",
                   "icon": {
                      "name": "action-vm"
                   },
                   "trigger": {
                      "type": "modal",
                      "uri": "index.html#/vm-action-modal",
-                     "titleKey": "vm.action.modal.title",
+                     "titleKey": "The Optimise",
                      "size": {
                         "width": 600,
                         "height": 205
                      }
-                  },
-                  "acceptsMultipleTargets": true,
-                  "dynamic": true
+                  }
                }
             ]
          }
@@ -112,21 +90,6 @@
             "action-vm": {
                "x": 0,
                "y": 0
-            }
-         },
-         "themeOverrides": {
-            "dark": {
-               "uri": "assets/images/sprites-dark.png",
-               "definitions": {
-                  "main": {
-                     "x": 0,
-                     "y": 64
-                  },
-                  "action-vm": {
-                     "x": 0,
-                     "y": 0
-                  }
-               }
             }
          }
       },

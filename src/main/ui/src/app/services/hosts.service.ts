@@ -29,4 +29,9 @@ export class HostsService {
       const endpoint = 'hosts';
       return this.http.put(endpoint, host).pipe(map(_ => undefined)) as Observable<never>;
    }
+
+   public optmize(): Observable<never> {
+      const endpoint = 'scale';
+      return this.http.post(endpoint, null).pipe(map(_ => undefined)) as Observable<never>;
+   }
 }

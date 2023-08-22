@@ -45,14 +45,14 @@
             "actions": [
                {
                   "id": "vmAction",
-                  "labelKey": "vm.action.label",
+                  "labelKey": "Optimise",
                   "icon": {
                      "name": "action-vm"
                   },
                   "trigger": {
                      "type": "modal",
                      "uri": "index.html#/vm-action-modal",
-                     "titleKey": "vm.action.modal.title",
+                     "titleKey": "The Optimise",
                      "size": {
                         "width": 600,
                         "height": 205
