@@ -16,6 +16,7 @@ import {VmConfigureComponent} from './views/vm-views/vm-configure.component';
 import {VmCardComponent} from './views/vm-views/vm-card.component';
 import {HostCardComponent} from './views/host-views/host-card.component';
 import {HostMonitorComponent} from './views/host-views/host.monitor.component';
+import { VmCpuComponent } from './views/vm-cpu/vm-cpu.component';
 
 const routes: Routes = [
    { path: 'create', component: CreateEditComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
    { path: 'vm-card', component: VmCardComponent },
    { path: 'host-card', component: HostCardComponent },
    { path: 'host-monitor', component: HostMonitorComponent },
+   { path: 'vm-cpu', component: VmCpuComponent},
    { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
 ];
 

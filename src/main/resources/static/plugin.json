@@ -28,7 +28,7 @@
                {
                   "navigationId": "vmMonitor",
                   "labelKey": "vm.monitor.view.title",
-                  "uri": "index.html#/vm-monitor"
+                  "uri": "index.html#/vm-cpu"
                }
             ]
          },

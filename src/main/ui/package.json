@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "SEE LICENSE IN License-Agreement.html",
   "scripts": {
-    "build": "node node_modules/@angular/cli/bin/ng build --extract-css --aot",
-    "build:prod": "node node_modules/@angular/cli/bin/ng build --prod",
+    "build": "DISABLE_ESLINT_PLUGIN=true node node_modules/@angular/cli/bin/ng build --extract-css --aot",
+    "build:prod": "DISABLE_ESLINT_PLUGIN=true node node_modules/@angular/cli/bin/ng build --prod",
     "watch": "node node_modules/@angular/cli/bin/ng build --watch --extract-css",
     "lint": "node node_modules/@angular/cli/bin/ng lint"
   },
@@ -28,6 +28,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.5",
     "css-vars-ponyfill": "1.9.0",
+    "d3": "^7.8.5",
     "mutationobserver-shim": "^0.3.2",
     "rxjs": "^6.5.4",
     "tslib": "^2.0.0",
@@ -44,16 +45,17 @@
     "@angular/cli": "12.2.12",
     "@angular/compiler-cli": "12.2.12",
     "@angular/language-service": "12.2.12",
+    "@types/d3": "^7.4.0",
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "eslint": "^7.26.0",
-    "ts-node": "9.1.1",
-    "tslint-to-eslint-config": "^2.4.0",
-    "typescript": "4.3.5",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jsdoc": "37.9.7",
-    "eslint-plugin-prefer-arrow": "1.2.3"
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "ts-node": "9.1.1",
+    "tslint-to-eslint-config": "^2.4.0",
+    "typescript": "4.3.5"
   },
   "engines": {
     "node": ">= 8 < 14"

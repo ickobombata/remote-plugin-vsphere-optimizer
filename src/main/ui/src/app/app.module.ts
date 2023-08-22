@@ -35,6 +35,7 @@ import { CreateWizardComponent } from './views/actions/create-edit/create-wizard
 import { AlertComponent } from './views/alert/alert.component';
 import { RemotePluginHttpInterceptpr } from '~services/http.interceptor';
 import { MessagingService } from '~services/messaging.service';
+import { VmCpuComponent } from './views/vm-cpu/vm-cpu.component';
 
 const createTranslateLoader = (http: HttpClient) =>
     new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -67,7 +68,8 @@ const createTranslateLoader = (http: HttpClient) =>
       HostCardComponent,
       HostMonitorComponent,
       CreateWizardComponent,
-      AlertComponent
+      AlertComponent,
+      VmCpuComponent
    ],
    providers: [ChassisService, ModalConfigService, ResourceService, HostsService,
       {

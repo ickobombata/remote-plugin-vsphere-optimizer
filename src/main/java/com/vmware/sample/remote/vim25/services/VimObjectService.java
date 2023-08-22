@@ -57,6 +57,35 @@ public class VimObjectService {
       this.configuration = configuration;
    }
 
+   // hachaton code
+
+
+   /**
+    * Retrieves information about the vSphere Host Objects from a vCenter Server
+    *
+    * @return a list of Host objects
+    */
+   public List<Host> retrieveSomething() {
+      List<Map<String, Object>> retrievedHosts = retrieveObjectProperties(
+            configuration.getVcenterGuid(), PROP_HOST, HOST_PROPERTIES);
+
+      return transformHostsPropertiesToObjects(retrievedHosts);
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    /**
     * Retrieves information about the vSphere Host Objects from a vCenter Server
     *
