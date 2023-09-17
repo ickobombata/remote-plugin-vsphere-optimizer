@@ -1,0 +1,27 @@
+<!DOCTYPE html><!-- Copyright (c) 2019-2023 VMware, Inc. All rights reserved. --><html><head>
+   <title>SDK Remote Plugin</title>
+   <meta charset="utf-8">
+   <script type="text/javascript" src="/api/ui/htmlClientSdk.js"></script>
+   <script>
+      const base = document.createElement('base');
+      base.href = htmlClientSdk.getProxiedPluginServerOrigin() + '/sample-ui/';
+      document.write(base.outerHTML);
+   </script>
+   <!-- Load MutationObserver polyfill and CSS vars polyfill to support IE11 -->
+   <script type="text/javascript" src="scripts/mutationobserver.min.js"></script>
+   <script type="text/javascript" src="scripts/css-vars-ponyfill.js"></script>
+   <script type="text/javascript">
+      //Initialize CSS vars polyfill
+      cssVars({
+         watch: true,
+         onlyVars: true
+      });
+   </script>
+   <link rel="stylesheet" type="text/css" id="theme-stylesheet-link">
+   <link rel="stylesheet" type="text/css" href="styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.css"></noscript>
+</head>
+<body>
+<app-root></app-root>
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="scripts.js" defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script>
+
+</body></html>

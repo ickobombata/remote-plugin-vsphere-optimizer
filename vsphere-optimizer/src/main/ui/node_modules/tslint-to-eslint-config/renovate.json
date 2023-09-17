@@ -1,0 +1,11 @@
+{
+    "automerge": true,
+    "extends": ["config:base"],
+    "labels": ["dependencies"],
+    "packageRules": [
+        {
+            "matchPackagePatterns": ["^chalk"],
+            "enabled": false
+        }
+    ]
+}
