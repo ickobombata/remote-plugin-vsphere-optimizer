@@ -23,16 +23,7 @@ const routes: Routes = [
    { path: 'create-wizard', component: CreateWizardComponent },
    { path: 'edit', component: CreateEditComponent },
    { path: 'vm-action-modal', component: VmActionModalComponent },
-   {
-      path: 'entry-point',
-      component: EntryPointComponent,
-      children: [
-         { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-         { path: 'welcome', component: WelcomeComponent },
-         { path: 'settings', component: SettingsComponent },
-         { path: 'list', component: ListComponent },
-      ]
-   },
+   { path: 'entry-point', component: EntryPointComponent },
    { path: 'vm-monitor', component: VmMonitorComponent },
    { path: 'vm-configure', component: VmConfigureComponent },
    { path: 'vm-card', component: VmCardComponent },

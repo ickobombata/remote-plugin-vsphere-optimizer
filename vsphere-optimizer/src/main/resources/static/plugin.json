@@ -101,9 +101,9 @@
          ],
          "definitions": {
             "plugin.name": {
-               "en-US": "SDK Remote Plugin",
-               "de-DE": "SDK Remote Plugin",
-               "fr-FR": "SDK Remote Plugin"
+               "en-US": "Plugin Recommendation System",
+               "de-DE": "Plugin Recommendation System",
+               "fr-FR": "Plugin Recommendation System"
             },
             "vm.action.label": {
                "en-US": "UI action",

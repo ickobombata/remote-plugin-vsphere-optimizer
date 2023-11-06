@@ -23,6 +23,9 @@
 hs_err_pid*
 replay_pid*
 
-target/*
-.idea/*
-src/main/ui/node_modules/*
+vsphere-optimizer
+vsphere-optimizer/target/*
+vsphere-optimizer/.idea/*
+vsphere-optimizer/src/main/ui/node_modules/*
+ 
+vsphere-optimizer/target/*
